@@ -1,0 +1,102 @@
+.header {
+  padding-top: 1.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 1.5rem;
+  background-color: grey;
+}
+a{
+    padding-left: 10rem;
+}
+.paw{
+    width:5%;
+    height:10%;
+}
+.samoyed{
+    margin:0%;
+    width:100%;
+    height: 58%;
+    max-height: max-content;
+    max-width: 100% ;
+    object-fit: cover;
+    object-position: 0% 71%;
+}
+
+h2{
+    text-align: center;
+}
+
+img{
+    max-height: 200;
+    /* object-fit: cover; */
+    /* overflow: hidden; */
+}
+  .left{
+    float: left;
+    /* flex: 0 1 auto; */
+    /* margin: 1rem; */
+    /* padding: 1.5rem; */
+    /* padding-left: 20%; */
+    background-color: rgba(239, 239, 239, 0.40);
+    border: 2px dashed;
+    border-radius: 4px;
+  
+    width: 30%;
+    height: 40%;
+    padding: 1.5rem;
+    margin: 5%;
+    margin-left:10%;
+    
+  }
+
+  .right {
+    float: left;
+    padding-right: 20%;
+    align-items: center;
+    max-width: 450px;
+    background-color: rgba(239, 239, 239, 0.40);
+    border: 2px dashed;
+    border-radius: 4px;
+    width: 30%;
+    height: 40%;
+    padding: 1.5rem;
+    margin: 5%;
+  }
+
+  /* Carousel */
+div.carousel {
+    max-width: 300px;
+    overflow: hidden;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+  }
+  
+  .carousel .slides {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* .carousel_item, */
+  .hidden {
+    display: none;
+  }
+
+
+  .visible {
+    display: block;
+  }
+
+button{
+    background-color: black; 
+    color: white;
+    text-align: center;
+
+}
