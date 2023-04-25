@@ -1,15 +1,21 @@
 function showHTML(list){
     console.log('show HTML test')
-    const show = document.querySelector('#showHere')
-    show.innerHTML = '';
-    list.forEach((item) =>{
-        const str = `<li>${item.name}</li>`
-        show.innerHTML += str
-    })
-}
+    const target = document.querySelector('#showHere')
+    target.innerHTML = '';
+    if (list.length > 0){
+        list.forEach((item) =>{
+        const str = `<li>${item}</li>`;
+        target.innerHTML += str
+        })}
+    // })} else {
+        // target.innerHTML = list
+    //     const target = document.querySelector('#showHere')
+    //     target.innerHTML = list.indexOf(list)
+    }
+// }
 function searchList(list, query){
-    return list.match((item) => {
-        return item.name.toLowerCase().includes(query.toLowerCase())
+    return list.findIndex((item) => {
+        return item.includesAll(query)
     })
 }
 async function mainEvent(){
@@ -17,27 +23,40 @@ async function mainEvent(){
     const allData = document.querySelector('#allData');
     const text = document.querySelector('#dogs')
     const searchListButton = document.querySelector('#search')
-    // const text = document.querySelector('#dogs')
     let breedList = [];
+    // const text = document.querySelector('#dogs')
     allData.addEventListener('click', async(submitevent) => {
-        console.log(breedList)
+        // const {breed} = item.message
         const showAll= await fetch('https://dog.ceo/api/breeds/list/all');
         breedList = await showAll.json();
         console.table(breedList)
-        showHTML(Object.entries(breedList))
+        const arrayConvert = Object.values(breedList)[0]
+        console.log(arrayConvert)
+        const array = Object.keys(arrayConvert)
+        const list = array[0]
+        console.log(array.length)
+        breedList = new Array()
+        array.forEach((item) =>{
+            breedList.push(item)
+        })
+        console.log(breedList)
+        // console.log(breedList.innerHTML)
+        // console.log(array[0])
+        showHTML(breedList)
     })
     text.addEventListener('input', (event) => {
         console.log('input', event.target.value)
-        const textList = searchList(JSON.stringify(breedList), event.target.value);
-        console.log(textList)
-        showHTML(textList)
+        // console.log(breedList)
+        const textList = searchList(breedList, event.target.value);
+        console.log(breedList.at(textList))
+        // showHTML(breedList.at(textList))
     })
     searchListButton.addEventListener('click', (event) =>{
         console.log('search clicked')
         const apiData = new FormData(showAll);
         const apiObj = Object.fromEntries(apiData)
         console.log(showAll)
-        const search = searchList(JSON.stringify(breedList), apiObj.dogs)
+        const search = searchList(breedList, apiObj.dogs)
         console.log(search)
         // showHTML(searchList)
     })
