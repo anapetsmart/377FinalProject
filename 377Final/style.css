@@ -5,6 +5,13 @@
     border-radius: 25px;
 
 }
+li{
+    padding: 3%;
+    border:dashed;
+    margin: 3%;
+    border-radius: 25px;
+
+}
 img{
     max-height: 100;
 }

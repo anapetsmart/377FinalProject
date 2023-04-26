@@ -1,21 +1,23 @@
 function showHTML(list){
     console.log('show HTML test')
-    const target = document.querySelector('#showHere')
+    const target = document.querySelector('.section')
     target.innerHTML = '';
-    if (list.length > 0){
+    // target.forEach((i) =>{
         list.forEach((item) =>{
-        const str = `<li>${item}</li>`;
-        target.innerHTML += str
-        })}
+            const str = `<li>${item}</li>`;
+            target.innerHTML += str
+        })
+    // })
+}
     // })} else {
         // target.innerHTML = list
     //     const target = document.querySelector('#showHere')
     //     target.innerHTML = list.indexOf(list)
-    }
+    
 // }
 function searchList(list, query){
-    return list.findIndex((item) => {
-        return item.includesAll(query)
+    return list.filter((item) => {
+        return item.toLowerCase().includes(query.toLowerCase())
     })
 }
 async function mainEvent(){
@@ -48,8 +50,8 @@ async function mainEvent(){
         console.log('input', event.target.value)
         // console.log(breedList)
         const textList = searchList(breedList, event.target.value);
-        console.log(breedList.at(textList))
-        // showHTML(breedList.at(textList))
+        console.log(textList)
+        showHTML(textList)
     })
     searchListButton.addEventListener('click', (event) =>{
         console.log('search clicked')
