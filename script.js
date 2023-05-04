@@ -1,3 +1,4 @@
+let photoArray = new Array()
 async function showHTML(list){
     // console.log('show HTML test')
     // console.log(list)
@@ -8,19 +9,24 @@ async function showHTML(list){
     // const resultJson = await result.json()
     // return value
     // let newArray = [];
-        list.forEach((breed) =>{
+    // for (var i = 0; i < list.length; i++) {    
+    list.forEach((breed) =>{
     // console.log(resultJson)
     // const keys = Object.values(resultJson)
             // const value = (Object.values(resultJson)[0])
             // console.log(value)
             link = getImage(breed)
+            // photoArray.push(link)
+            // console.log(photoArray)
+            // console.log(breed)
+            // console.log
             // Promise.all(link)
             // console.log(link)
             // console.log(link)
             // newArray.push(link)
             // console.log(newArray)
-            const str = `<div class='section'><img src = "${link}"/>${breed}</div>`;
-            target.innerHTML += str
+            // const str = `<div class='section'><img src = "${link}"/>${breed}</div>`;
+            // target.innerHTML += str
         // })
     // })
 })
@@ -28,16 +34,48 @@ async function showHTML(list){
 
 
 async function getImage(breed){
+    console.log(breed)
     // let returnArray = []
+    const target = document.querySelector('#showHere')
+    target.innerHTML = '';
     const result = await fetch(`https://dog.ceo/api/breed/${breed}/images/random`)
+    // wait(5)
     const resultJson = await result.json()
+    // wait(10)
+    // console.log(resultJson)
     // console.log(resultJson)
     // const keys = Object.values(resultJson)
-    const value = (Object.values(resultJson)[0])
+    let value = new Array()
+    value.push(Object.values(resultJson)[0])
+    // const sortValue = value.sort()
+    // const sortedValue = value[0]
     console.log(value)
+    // photoArray.push(value)
+    // const newPhotoArray = photoArray[98]
+    let newArray = photoArray[98]
+    console.log(newArray)
+    const str = [`<div class='section'><img src = "${value}"/><span>${breed}</span></div>`]
+    // console.log(str)
+    str.forEach((item) => {
+        target.innerHTML += item
+    })
+    // console.log(typeof str)
+    // console.log(str.sort())
+    // photoArray.push(str)
+    // targe/
+    // console.log(photoArray)
+    // console.log(photoArray)
+    // console.log(photoArray)
+    // console.log(photoArray.sort()[0])
+    // photoArray.forEach((item) => {
+    // target.innerHTML += item
+    // console.log(typeof target)
+    // console.log(str)
+    // console.log(value, breed)
     // const str = `<div class='section'><img src = "${link}"/>${breed}</div>`;
     // target.innerHTML += str
     // return value
+    // })
 }
 function searchList(list, query){
     return list.filter((item) => {
@@ -53,6 +91,7 @@ async function mainEvent(){
     const sortButton = document.querySelector('#sort')
     const reverseButton = document.querySelector('#reverseSort')
     let breedList = [];
+    const stored = localStorage.getItem('stored')
     // const text = document.querySelector('#dogs')
     allData.addEventListener('click', async(submitevent) => {
         // const {breed} = item.message
@@ -76,6 +115,7 @@ async function mainEvent(){
         array.forEach((item) =>{
             breedList.push(item)
         })
+        localStorage.setItem('stored', JSON.stringify(breedList));
         // console.log(breedList)
         // console.log(breedList.innerHTML)
         // console.log(array[0])
