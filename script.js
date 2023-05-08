@@ -1,4 +1,6 @@
-let photoArray = new Array()
+let photoArray = []
+let arrayCount = []
+let i = 0 
 async function showHTML(list){
     // console.log('show HTML test')
     // console.log(list)
@@ -16,6 +18,8 @@ async function showHTML(list){
             // const value = (Object.values(resultJson)[0])
             // console.log(value)
             link = getImage(breed)
+            // console.log(str)
+            // console.log(link)
             // photoArray.push(link)
             // console.log(photoArray)
             // console.log(breed)
@@ -34,37 +38,21 @@ async function showHTML(list){
 
 
 async function getImage(breed){
-    console.log(breed)
-    // let returnArray = []
+    // console.log(breed)
     const target = document.querySelector('#showHere')
     target.innerHTML = '';
     const result = await fetch(`https://dog.ceo/api/breed/${breed}/images/random`)
-    // wait(5)
     const resultJson = await result.json()
-    // wait(10)
-    // console.log(resultJson)
-    // console.log(resultJson)
-    // const keys = Object.values(resultJson)
-    let value = new Array()
-    value.push(Object.values(resultJson)[0])
-    // const sortValue = value.sort()
-    // const sortedValue = value[0]
-    console.log(value)
-    // photoArray.push(value)
-    // const newPhotoArray = photoArray[98]
-    let newArray = photoArray[98]
-    console.log(newArray)
-    const str = [`<div class='section'><img src = "${value}"/><span>${breed}</span></div>`]
+    const value = (Object.values(resultJson)[0])
+    const str = `<div class='section'><img src = "${value}"/><span>${breed}</span></div>`;
+    photoArray.push(str)
+    // arrayCount.push(photoArray[0])
+    // console.log(photoArray[i])
+    arrayCount.push(photoArray[i])
+    // console.log(arrayCount[i])
+    // photoArray.splice(",")
+    // console.log(photoArray)
     // console.log(str)
-    str.forEach((item) => {
-        target.innerHTML += item
-    })
-    // console.log(typeof str)
-    // console.log(str.sort())
-    // photoArray.push(str)
-    // targe/
-    // console.log(photoArray)
-    // console.log(photoArray)
     // console.log(photoArray)
     // console.log(photoArray.sort()[0])
     // photoArray.forEach((item) => {
@@ -73,10 +61,13 @@ async function getImage(breed){
     // console.log(str)
     // console.log(value, breed)
     // const str = `<div class='section'><img src = "${link}"/>${breed}</div>`;
-    // target.innerHTML += str
+    target.innerHTML += str
     // return value
     // })
+    // return str
+    i+=1
 }
+// console.log(photoArray[98])
 function searchList(list, query){
     return list.filter((item) => {
         return item.toLowerCase().includes(query.toLowerCase())
@@ -116,6 +107,7 @@ async function mainEvent(){
             breedList.push(item)
         })
         localStorage.setItem('stored', JSON.stringify(breedList));
+        // console.log(photoArray)
         // console.log(breedList)
         // console.log(breedList.innerHTML)
         // console.log(array[0])
