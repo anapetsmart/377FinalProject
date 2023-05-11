@@ -32,7 +32,8 @@ img{
     /* overflow: hidden; */
 }
   .left{
-    float: left;
+    /* display:flex; */
+    /* float: left; */
     /* flex: 0 1 auto; */
     /* margin: 1rem; */
     /* padding: 1.5rem; */
@@ -48,9 +49,14 @@ img{
     margin-left:10%;
     
   }
-
+  .box{
+    display: flex;
+    height: 105%;
+  }
   .right {
-    float: left;
+    /* display: flex; */
+    /* flex: inline; */
+    /* float: left; */
     padding-right: 20%;
     align-items: center;
     max-width: 450px;
@@ -115,12 +121,12 @@ body{
       padding-left: 2rem;
   }
   .right{
-    float: right;
+    /* float: right; */
     width: 70%;
 
   }
   .left{
-    float: right;
+    /* float: right; */
     width: 70%;
 
   }
