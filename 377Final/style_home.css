@@ -85,7 +85,7 @@ div.carousel {
   }
   
   /* .carousel_item, */
-  .hidden {
+  .hidden { 
     display: none;
   }
 
@@ -99,4 +99,34 @@ button{
     color: white;
     text-align: center;
 
+}
+body{
+  margin: 0;
+}
+
+@media only screen and (max-width: 736px){
+  .header {
+      padding-top: .5rem;
+      padding-bottom: .5rem;
+      background-color: grey;
+      font-size: 20px;
+    }
+    a{
+      padding-left: 2rem;
+  }
+  .right{
+    float: right;
+    width: 70%;
+
+  }
+  .left{
+    float: right;
+    width: 70%;
+
+  }
+  img{
+    max-height: 200;
+    /* object-fit: cover; */
+    /* overflow: hidden; */
+}
 }
